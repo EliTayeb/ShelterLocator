@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Redirect to Google Maps</title>
+    <script type="text/javascript">
+        function detectDevice() {
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+            // Android detection
+            if (/android/i.test(userAgent)) {
+                window.location.href = "geo:0,0?q=shelters";
+            }
+            // iOS detection
+            else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                window.location.href = "comgooglemaps://?q=shelters";
+            }
+            // Default to web version for PCs and other devices
+            else {
+                window.location.href = "https://www.google.com/maps/search/shelters/";
+            }
+        }
+    </script>
+</head>
+<body onload="detectDevice()">
+</body>
+</html>
